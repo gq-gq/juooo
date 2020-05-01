@@ -1,8 +1,7 @@
 import {
     combineReducers
 } from "redux";
-import {} from "./home"
-import {} from "./movie"
+import theater from "./theater"
 export default combineReducers({
-    
+    theater,
 })
