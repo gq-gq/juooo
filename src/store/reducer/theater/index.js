@@ -5,5 +5,11 @@ export default function (state=theaterListInit,{type,payload}) {
     if(type===theaterType.GET_THEATER_LIST){
         state.theaterList = payload
     }
+    if(type === theaterType.GET_THEATER_DETAIL){
+        state.theaterDetail = payload
+    }
+    if(type === theaterType.GET_THEATER_DETAIL_LIST){
+        state.theaterDetailList = payload
+    }
     return state;
 }

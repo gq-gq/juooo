@@ -13,5 +13,8 @@ class GuardRouter extends Component {
             <this.props.component {...this.props}/>
         )
     }
+    componentDidMount(){
+        console.log(this.props)
+    }
 }
 export default withRouter(GuardRouter)

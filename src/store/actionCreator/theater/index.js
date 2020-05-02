@@ -6,7 +6,18 @@ export function changeTheaterList(payload) {
         payload
     }
 }
-
+export function changeTheaterDetail(payload){
+    return {
+        type:theaterType.GET_THEATER_DETAIL,
+        payload
+    }
+}
+export function changeTheaterDetailList(payload={}){
+    return {
+        type:theaterType.GET_THEATER_DETAIL_LIST,
+        payload
+    }
+}
 export default {
     getTheaterList(){
         
@@ -34,4 +45,25 @@ export default {
             dispatch(changeTheaterList(arr))
         }
     },
+    getTheaterDetail(id){
+        return async (dispatch)=>{
+            // https://api.juooo.com/theatre/index/getTheatreInfo?theatre_id=2&longitude=&latitude=&version=6.1.1&referer=2
+            const {data} = await axios.get('/theatre/index/getTheatreInfo?theatre_id='+id+'&longitude=&latitude=&version=6.1.1&referer=2')
+            console.log(data)
+            dispatch(changeTheaterDetail(data.data))
+        }
+    },
+    getTheaterDetailList(id){
+        return async (dispatch)=>{
+            // https://api.juooo.com/Show/Search/getShowList?page=1&venue_id=1078,1079,1795&version=6.1.1&referer=2
+            const {data} = await axios.get('/Show/Search/getShowList?page=1&venue_id='+id+'&version=6.1.1&referer=2')
+            console.log(data)
+            dispatch(changeTheaterDetailList(data.data.list))
+        }
+    },
+    clearInfo(){
+        return (dispatch)=>{
+            dispatch(changeTheaterDetailList())
+        }
+    }
 }
