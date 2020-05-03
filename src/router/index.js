@@ -8,6 +8,7 @@ import showList from '../views/showList'
 import error from '../views/error'
 import theaterDetail from '../views/theaterDetail'
 import Search from '../views/Search'
+import MySet from '../views/Myset'
 export default [
     {
         path:'/login',
@@ -24,6 +25,10 @@ export default [
     {
         path:'/Search',
         component:Search
+    },
+    {
+        path:'/Myset',
+        component:MySet
     },
     {
         path:'/error',
