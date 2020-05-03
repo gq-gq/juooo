@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import './assets/iconfont/iconfont.css'
 import './assets/css/reset.css'
 import {
   BrowserRouter as Router

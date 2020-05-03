@@ -25,7 +25,7 @@ class theater extends Component {
             this.theaterInfo = this.props.theaterList.map(v => (
                 <div className={"theater-main"} key={v.id}>
                     <div className={"theater-main-h"}>
-                        <Link to={'/theaterDetail'} className={"theater-m-h"}>
+                        <Link to={'/theaterDetail/'+v.id+'/'+v.show_list_url.split('=')[1]} className={"theater-m-h"}>
                             <div className={"theater-m-img"}>
                                 <img src={v.pic} alt="" />
                             </div>
@@ -34,28 +34,28 @@ class theater extends Component {
                                 <p className={"theater-count"}>{v.count}场在售演出</p>
                             </div>
                         </Link>
-                        <Link to={'/theaterDetail'} className={"theater-more"}>
+                        <Link to={'/theaterDetail/'+v.id+'/'+v.show_list_url.split('=')[1]} className={"theater-more"}>
                             <img src={"https://m.juooo.com/static/img/more.2ce7873.png"} alt="" />
                         </Link>
                     </div>
                     <div className={"theater-show"}>
                         {
                             v.showList.map((m,i) => (
-                                    <div className={"theater-show-item"} key={m.id}>
-                                        <div className={"theater-show-date"}>
+                                    <div className={"theater-show-item"} key={m.id} >
+                                        <div className={"theater-show-date"} >
                                             <p className={"show-date"}>{m.show_time}</p>
                                             <span className={"show-dot"}></span>
                                         </div>
                                         <div className={"theater-show-pic"}>
                                             {
                                                 i<8?
-                                                (<Link to={'/login'} className={"theater-show-pic"}>
-                                                    <img style={{ width: '100%', height: '100%' }} src={m.pic} alt="" />
-                                                </Link>):
                                                 (
-                                                    <Link to={'/login'} className={"theater-show-pic"}>
-                                                        <p style={{ width: '100%', height: '300px',background:'#f5f5f5',lineHeight:'130px',fontSize:'12px',textAlign:'center',marginBottom:'100px'}} >查看更多>></p>
-                                                        <p style={{ width: '100%', height: '2000px',background:'#fff',textAlign:'center',marginBottom:'100px',verticalAlign:'top'}}></p>
+                                                    <img className={"theater-show-pic"} style={{ width: '100%', height: '100%' }} src={m.pic} alt="" />
+                                                ):
+                                                (
+                                                    <Link to={'/Search/'+v.show_list_url.split('=')[1]} className={"theater-show-pic"}>
+                                                        <p style={{ width: '100%', height: '100%',background:'#f5f5f5',lineHeight:'130px',fontSize:'12px',textAlign:'center',marginTop:'10px'}}>查看更多>> 
+                                                        </p>
                                                     </Link> 
                                                 )
                                             }
@@ -75,7 +75,7 @@ class theater extends Component {
                 <div className={"theater-header"}>
                     <h3 className={"theater-title"}>剧院</h3>
                 </div>
-                <main>
+                <main id={'main'}>
                     {
                         this.isloading ? this.theaterInfo : <Loading></Loading>
                     }
@@ -84,7 +84,6 @@ class theater extends Component {
         )
     }
     componentDidMount() {
-        console.log(this.props)
         this.isloading = false
         this.props.getTheaterList()
     }

@@ -1,0 +1,159 @@
+.theaterDetail-header{
+    width:100%;
+    height:136px;
+    background:url('https://m.juooo.com/static/img/theater_detail_bg.png') no-repeat center;
+    background-size:100%;
+    display:flex;
+    flex-wrap: wrap;
+}
+.icon-xiaoyuhao{
+    color:#fff;
+    display:inline-block;
+    width:100%;
+    height:37px;
+    box-sizing:border-box;
+    line-height:37px;
+    text-align:left;
+    padding-left:10px;
+}
+.theaterDetail-header-theater{
+    width:248;
+    height:118px;
+    box-sizing:border-box;
+    padding-left:20px;
+    margin-top:10px;
+    color:#fff;
+}
+.theaterDetail-header-theaterTop{
+    display:flex;
+    justify-content:start;
+    align-items: center;
+    width:248px;
+    height:38px;
+    text-align:left;
+}
+.theaterDetail-header-theaterTop-pic{
+    width:38px;
+    height:38px;
+}
+.theaterDetail-header-theaterTop-pic>img{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+}
+.theaterDetail-header-theaterTop-name{
+    font-weight:bold;
+    font-size:14px;
+    line-height: 16px;
+    width:240px;
+    /* height:20px; */
+}
+.theaterDetail-header-theaterTop-detail{
+    margin-left:10px;
+    margin-top:5px;
+}
+.theaterDetail-header-theaterTop-play{
+    font-size:12px;
+}
+.theaterDetail-header-theaterAddress{
+    margin-top:20px;
+    width:240;
+    height:13px;
+    font-size:10px;
+    text-align:left;
+}
+.theaterDetail-header-theaterAddress-pic-b{
+    width:25px;
+    height:25px;
+    border-radius: 50%;
+    border-top:1px solid #fff;
+    background:#ededed;
+    margin-top:50px;
+    margin-left:10px;
+}
+.theaterDetail-header-theaterAddress-pic{
+    width: 15px;
+    height: 15px;
+    margin-top:5px;
+    margin-left:5px;
+    background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAsCAMAAAA6jerHAAABQVBMVEUAAAD/fzz/dj7/fD3/ZET/Y0T/fzv/dD7/bEL/Z0P/bEH/fTz/ZkP/cz//akL/YUX/hTr/YUT/bUH/fTz/jTf/jTj/gTv/bEH/ZET/fjz/ez3/ezz/ezz/gzv/YUX/YEX/jjj/dD//cUD/izj/YEX/eD7/jjf/dD//YUT/iTn/ezz/hzn/YUX/jTj/YkT/YEX/eD7/X0X/bUH/jjf/hzn/YEX/eT3/eD7/bEH/fD3/iDn/izj/ej3/hDr/Y0T/hzr/dj//aEP/YUX/gzv/b0H/gzv/bEH/gzv/bEH/ej3/jjj/bUH/gDz/fTz/ckD/jzf/bUH/eD7/hTr/gjv/gTv/dT//bEH/Y0T/hTr/iDn/gTv/aUL/ZUP/cUD/Z0P/eD7/bkH/fjz/izj/ej3/fDz/gzv/dT//cz//ijn/jTj/YUVF8FolAAAAVnRSTlMAAhALQurEmE42Lhv7+ff19fHx08avmZdaWjowLP76+vrv7NXSv7y0nJuJbmNYU05EPDs7JRsX+uzs7Onn1szMycO9vbyzrayTk4uHfHx6empqZFFGJpDcPtEAAAHiSURBVDjLfdNnXxpBEAbw5w4pgigKiAgmlhi7SYyaHnvv7Y4DThQrfP8P4LJuvUWf1//fzN7MHNQszmTHUl4p9W9nZhFtY81l6s+e55VKpYdyuRzJW6b5PlanxiOmhW5v04PBMvsNYnghau7v76a1YqHPxNSD5q42HlJMptFoZ2q1VaGs7Fvm8XGCdzxRDUXCPD0dg6Y43Ah8GEHc+MkiRe0fzYzvb9IBqc2GIof5/FGENyPm5mYBQFYxkQJoCuOsEDHONmAPS9MvhmdFqSHIcbptzMlHbxEj1MSrIcgZwJTYRioBJYkkN5UcMrIZtES5qazhj/j4Sx195eY6DDmgZR0t+8xcd0FOGoG0ClUIqlbxLCZt68bmhaoufottBA5xgZtqGCtiY9M6OuDG/Y8psdVfttbtJzfuJM7Jo9nm91S0K4w7i8SQPKEzaU5pM2qaS8CGckJRm/XKObLQOoAL9aZHorF4PJbrU0xzHoCV5kaekGo+WXRJuvF10+wATb9m2Da4meT/ZlrcvdksJA7sLynU1oSXIDL4o1XINB+/QUkhSQuZRsvViPnonjgCKY6yQty4vZ0wEh9VmjFjprNPNT1siKYyjZmObm4+fAHeVqYxE+uiaAB4X5nGzHy4dxaBvADSVUHeBpCfPgAAAABJRU5ErkJggg==') no-repeat center;
+    background-size: 80%;
+}
+.theaterDetail-tip{
+    font-weight: bold;
+    padding-left:15px;
+    box-sizing: border-box;
+    color:#232323;
+    width: 100%;
+    height:20px;
+    text-align: left;
+    margin-top:10px
+}
+.theaterDetail-list{
+    width:90%;
+    padding: 0 5%;
+}
+.theaterDetail-list-item{
+    width: 100%;
+    min-height:124px;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+.theaterDetail-list-item-pic{
+    width: 90px;
+    height:122px;
+}
+.theaterDetail-list-item-detail{
+    width: 192px;
+    height: 122px;
+    margin-left: 15px;
+}
+.theaterDetail-list-item-detail-date{
+    width: 100%;
+    height: 14px;
+    font-size: 12px;
+    text-align: left;
+    color:#232323;
+}
+.theaterDetail-list-item-detail-content{
+    width: 100%;
+    font-size: 13px;
+    line-height: 20px;
+    /* text-align: left; */
+    color:#232323;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.theaterDetail-list-item-detail-address{
+    width: 100%;
+    font-size: 10px;
+    line-height: 20px;
+    color:#666;
+}
+.theaterDetail-list-item-detail-label{
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    background:#fff1ef;
+    font-size:10px;
+    color:#ff6743;
+    border-radius: 5px;
+    padding:0 4px;
+    margin:4px;
+}
+.theaterDetail-list-item-detail-Price{
+    width: 100%;
+    color: #666;
+    font-size: 10px;
+    margin-top: 5px;
+}
+.theaterDetail-list-item-detail-price{
+    margin-right:5px;
+    color:#ff6743;
+    font-weight:100;
+    font-size:14px;
+}

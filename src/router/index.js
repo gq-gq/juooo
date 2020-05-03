@@ -6,6 +6,8 @@ import login from '../views/login'
 import Index from '../views/Index'
 import showList from '../views/showList'
 import error from '../views/error'
+import theaterDetail from '../views/theaterDetail'
+import Search from '../views/Search'
 export default [
     {
         path:'/login',
@@ -14,6 +16,14 @@ export default [
     {
         path:'/showList',
         component:showList
+    },
+    {
+        path:'/theaterDetail/:id/:venue_id',
+        component:theaterDetail
+    },
+    {
+        path:'/Search',
+        component:Search
     },
     {
         path:'/error',

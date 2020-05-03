@@ -1,0 +1,122 @@
+.searchInput-header{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    width:100%;
+    height:38px;
+    background:#fefefe;
+}
+.searchInput-header-search{
+    width:256px;
+    height:25px;
+    background:#f5f5f5;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+}
+.searchInput-header-search-big{
+    width:18px;
+    height:18px;
+    margin-left:10px;
+}
+.searchInput-header-search-input{
+    border:0;
+    background:#f5f5f5;
+    width:200px;
+    font-size:12px;
+    outline: none;
+}
+.searchInput-header-search-cha{
+    width:18px;
+    height:18px;
+    margin-right:10px;
+}
+.search-keyTitle{
+    width: 90%;
+    padding:0 5%;
+    text-align: left;
+    font-size: 12px;
+    line-height: 30px;
+    color:#666;
+}
+.search-allkeywords{
+    width: 90%;
+    padding:0 5%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.search-keywords{
+    padding:10px 15px;
+    background:#f5f5f5;
+    color:#232323;
+    font-size: 13px;
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.search-request{
+    width:90%;
+    margin:0 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top:15px;
+}
+.search-request-item{
+    width:49%;
+    height:315px;
+    background:#fefefe;
+}
+.search-request-item>img{
+    width: 100%;
+    height:198px;
+    border-radius: 5px;
+    text-align: left;
+}
+.search-request-item-name{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    line-height: 18px;
+    font-size:13px;
+    color:#232323;
+    text-align: left;
+    width: 92%;
+    padding:0 4%;
+}
+.search-request-item-name-key{
+    color:#ff6743;
+}
+.search-request-item-date{
+    width: 94%;
+    padding:0 3%;
+    text-align: left;
+    line-height: 20px;
+    font-size:12px;
+    color:#666;
+}
+.search-request-item-Price{
+    width: 92%;
+    padding:0 4%;
+    font-size: 10px;
+    line-height: 20px;
+    text-align: left;
+    color:#999;
+}
+.search-request-item-price{
+    font-size: 14px;
+    color:#ff6743;
+    margin-right: 10px;
+}
+.search-request-item-label{
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    background:#fff1ef;
+    font-size:10px;
+    color:#ff6743;
+    border-radius: 5px;
+    padding:0 4px;
+    margin:4px;
+}

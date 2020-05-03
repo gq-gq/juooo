@@ -1,3 +1,5 @@
 export default {
-    theaterList:[]
+    theaterList:[],
+    theaterDetail:{},
+    theaterDetailList:[]
 }
