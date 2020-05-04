@@ -10,7 +10,7 @@ class myHead extends Component {
                     <span>全国</span>
                 </div>
                 <div className="header-middle">
-                    <p onClick={()=>this.props.history.push("/showList")}>
+                    <p onClick={()=>this.props.history.push("/Search")}>
                         <i></i>
                         <input type="text" placeholder="搜索热门演出"/>
                     </p>

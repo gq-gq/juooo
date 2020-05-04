@@ -41,7 +41,6 @@ export default {
                     arr.push(v)
                 }
             })
-            console.log(arr)
             dispatch(changeTheaterList(arr))
         }
     },
@@ -49,7 +48,7 @@ export default {
         return async (dispatch)=>{
             // https://api.juooo.com/theatre/index/getTheatreInfo?theatre_id=2&longitude=&latitude=&version=6.1.1&referer=2
             const {data} = await axios.get('/theatre/index/getTheatreInfo?theatre_id='+id+'&longitude=&latitude=&version=6.1.1&referer=2')
-            console.log(data)
+            // console.log(data)
             dispatch(changeTheaterDetail(data.data))
         }
     },
@@ -57,7 +56,6 @@ export default {
         return async (dispatch)=>{
             // https://api.juooo.com/Show/Search/getShowList?page=1&venue_id=1078,1079,1795&version=6.1.1&referer=2
             const {data} = await axios.get('/Show/Search/getShowList?page=1&venue_id='+id+'&version=6.1.1&referer=2')
-            console.log(data)
             dispatch(changeTheaterDetailList(data.data.list))
         }
     },

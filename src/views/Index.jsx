@@ -9,7 +9,7 @@ export default class Index extends Component {
         // console.log(this.props)
         return (
             <div>
-                 <nav style={{position:'fixed',bottom:'0',left:'0'}}>
+                 <nav className="app-bottom" style={{position:'fixed',bottom:'0',left:'0'}}>
                     <NavLink to={'/'}>首页</NavLink>
                     <NavLink to={'/theater'}>剧院</NavLink>
                     <NavLink to={'/ticket'}>票夹</NavLink>
