@@ -5,6 +5,10 @@ import '../assets/css/login.css'
 export default class login extends Component {
     constructor(props){
         super(props)
+        this.reg={
+            phone:/^1([38]\d|5[0-35-9]|7[3678])\d{8}$/,
+            email:/^[A-Za-z0-9]+([_\.][A-Za-z0-9]+)*@([A-Za-z0-9\-]+\.)+[A-Za-z]{2,6}$/
+        }
         this.state={
             phone:{
                 phone:'',
@@ -23,7 +27,8 @@ export default class login extends Component {
             style:{
                 opacity: "0.4"
             },
-            login:true
+            login:true,
+            code:false,
         }
     }
     changeCon(vl,e){
@@ -68,6 +73,20 @@ export default class login extends Component {
         this.setState({
             login:!this.state.login
         })
+    }
+    async  getCode(){
+        if(this.state.phone.phone&&this.state.password.password){
+            if(this.reg.phone.test(this.state.phone.phone)){
+                this.setState({
+                    code:true
+                })
+                const data  = await axios.post('/login',{
+                    userCode:this.state.phone.phone
+                })
+            }
+        }else{
+            return
+        }
     }
     render() {
         const passLogin = <Fragment>
@@ -125,19 +144,18 @@ export default class login extends Component {
                     <input type={'text'} className={'login-password'} placeholder={'请输入验证码'} value={this.state.password.password} onChange={this.changeCon.bind(this,'password')}/>
                 </div>
                 <p style={{fontSize:'10px',color:'#999',width:'265px',margin:'10px 27px 0 27px',textAlign:'left'}}>未注册的手机号将自动创建会员账号</p>
-                <input type="button" style={this.state.style} value={"获取短信验证码"} className={'login-btn'}/>
+                <input type="button" style={this.state.style} value={"获取短信验证码"} className={'login-btn'} onClick={()=>{
+                    this.setState({
+                        code:true
+                    })
+                }}/>
                 <div className={'login-tab'}>
                     <span style={{float:'left'}}>邮箱注册</span>
                     <span style={{float:'right'}} onClick={this.changeLogin.bind(this)}>密码登录</span>
                 </div>
         </Fragment>
-        return (
-            <div>
-                <div className={'login-header'}>
-                    <i className={'iconfont icon-xiaoyuhao'} onClick={()=>{
-                        this.props.history.push(-1)
-                    }}></i>
-                </div>
+        const loginPage = <Fragment>
+             
                 <div className={'login-logo'}>
                     <img src={'https://m.juooo.com/static/img/login_logo.4a43235.png'} style={{width:'137px',height:'43px'}}/>
                 </div>
@@ -155,6 +173,30 @@ export default class login extends Component {
                         <img className={'login-other-way'} src={require('../assets/img/weibo.png')} alt=""/>
                     </div>
                 </div>
+        </Fragment>
+        const codePage = <Fragment>
+            <h1 className={'login-code-title'}>验证码</h1>
+            <p className={'login-code-little'}>验证码已发送至手机尾号{this.state.phone.phone}</p>
+            <div className={'login-code-code'}>
+                <div contentEditable={"true"} className={'login-code-item'}>1</div>
+                <div contentEditable={"true"} className={'login-code-item'}>2</div>
+                <div contentEditable={"true"} className={'login-code-item'}>3</div>
+                <div contentEditable={"true"} className={'login-code-item'}>4</div>
+            </div>
+            <p className={'login-code-time'}>
+                <span>58</span> <span>秒后重新获取验证码</span>
+            </p>
+        </Fragment>
+        return (
+            <div>
+                <div className={'login-header'}>
+                    <i className={'iconfont icon-xiaoyuhao'} onClick={()=>{
+                        this.props.history.push(-1)
+                    }}></i>
+                </div>
+               {
+                   this.state.code?codePage:loginPage 
+               }
             </div>
         )
     }
