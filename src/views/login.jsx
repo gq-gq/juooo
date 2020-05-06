@@ -29,6 +29,11 @@ export default class login extends Component {
             },
             login:true,
             code:false,
+            time:60,
+            a:'',
+            b:'',
+            c:'',
+            d:''
         }
     }
     changeCon(vl,e){
@@ -75,18 +80,53 @@ export default class login extends Component {
         })
     }
     async  getCode(){
+        let timer = null;
         if(this.state.phone.phone&&this.state.password.password){
+            console.log(11111111)
             if(this.reg.phone.test(this.state.phone.phone)){
+                console.log(222222222)
                 this.setState({
                     code:true
                 })
-                const data  = await axios.post('/login',{
-                    userCode:this.state.phone.phone
+                const {data}  = await axios.post('/api/code',{
+                    userPhone:this.state.phone.phone
                 })
+                console.log(data)
+                document.querySelector('#code').innerHTML = data.code;
+
+                timer=setInterval(()=>{
+                    if(this.state.time>0){
+                        this.setState({
+                            time:this.state.time-1
+                        })
+                    }else{
+                        clearInterval(timer)
+                        document.querySelector('#time').style.display='none'
+                        document.querySelector('#reget').style.display='block'
+                    }
+
+                },1000)
             }
         }else{
             return
         }
+    }
+    async login(){
+        const {data}=await axios.post('/api/login',{
+            userPhone:this.state.phone.phone,
+            code:this.state.a+this.state.b+this.state.c+this.state.d
+        })
+        if(data.ok===1){
+            this.sessionStorage.user  = this.state.phone.phone
+            this.props.history.push('/mine')
+        }
+        console.log(data)
+    }
+    changeHandl(v,e){
+        console.log(this)
+        this.setState({
+            [v]:e.target.value
+        })
     }
     render() {
         const passLogin = <Fragment>
@@ -144,11 +184,7 @@ export default class login extends Component {
                     <input type={'text'} className={'login-password'} placeholder={'请输入验证码'} value={this.state.password.password} onChange={this.changeCon.bind(this,'password')}/>
                 </div>
                 <p style={{fontSize:'10px',color:'#999',width:'265px',margin:'10px 27px 0 27px',textAlign:'left'}}>未注册的手机号将自动创建会员账号</p>
-                <input type="button" style={this.state.style} value={"获取短信验证码"} className={'login-btn'} onClick={()=>{
-                    this.setState({
-                        code:true
-                    })
-                }}/>
+                <input type="button" style={this.state.style} value={"获取短信验证码"} className={'login-btn'} onClick={this.getCode.bind(this)}/>
                 <div className={'login-tab'}>
                     <span style={{float:'left'}}>邮箱注册</span>
                     <span style={{float:'right'}} onClick={this.changeLogin.bind(this)}>密码登录</span>
@@ -178,13 +214,40 @@ export default class login extends Component {
             <h1 className={'login-code-title'}>验证码</h1>
             <p className={'login-code-little'}>验证码已发送至手机尾号{this.state.phone.phone}</p>
             <div className={'login-code-code'}>
-                <div contentEditable={"true"} className={'login-code-item'}>1</div>
-                <div contentEditable={"true"} className={'login-code-item'}>2</div>
-                <div contentEditable={"true"} className={'login-code-item'}>3</div>
-                <div contentEditable={"true"} className={'login-code-item'}>4</div>
+                <div  className={'login-code-item'}>
+                    <input type="text" value={this.state.a} onChange={this.changeHandl.bind(this,'a')}/>
+                </div>
+                <div className={'login-code-item'}>
+                    <input type="text" value={this.state.b} onChange={this.changeHandl.bind(this,'b')}/>
+                </div>
+                <div className={'login-code-item'}>
+                    <input type="text" value={this.state.c} onChange={this.changeHandl.bind(this,'c')}/>
+                </div>
+                <div className={'login-code-item'}>
+                    <input type="text" value={this.state.d}   onChange={async(e)=>{
+                        this.setState({
+                            d:e.target.value
+                        })
+                        const {data}=await axios.post('/api/login',{
+                            userPhone:this.state.phone.phone,
+                            code:this.state.a+this.state.b+this.state.c+e.target.value
+                        })
+                        if(data.ok===1){
+                            sessionStorage.setItem('user',this.state.phone.phone)
+                            this.props.history.push('/mine')
+                        }
+                        console.log(data)
+                    }}/>
+                </div>
             </div>
-            <p className={'login-code-time'}>
-                <span>58</span> <span>秒后重新获取验证码</span>
+            <p style={{marginTop:'20px'}}>
+                <span id={'code'}></span>
+            </p>
+            <p className={'login-code-time'} id={'time'}>
+                <span>{this.state.time}</span> <span>秒后重新获取验证码</span>
+            </p>
+            <p className={'login-code-time'} style={{display:'none',color:'#ff6743'}} id={'reget'}>
+                <span onClick={this.getCode.bind(this)}>重新获取验证码</span>
             </p>
         </Fragment>
         return (

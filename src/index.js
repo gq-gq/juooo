@@ -12,9 +12,13 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 import store from './store';
 axios.interceptors.request.use(config=>{
-  config.url = '/juooo' + config.url +'?t=' + Date.now()
-  console.log(config)
-  return config;
+  if(config.url.slice(0,4)==='/api'){
+    return config
+  }else{
+    config.url = '/juooo' + config.url
+    return config;
+  }
+  
 })
 axios.interceptors.response.use(data=>{
   console.log(data)

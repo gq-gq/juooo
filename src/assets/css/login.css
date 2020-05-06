@@ -119,6 +119,13 @@
     outline: none;
     caret-color: #ff6743;
 }
+.login-code-item>input{
+    width: 20px;
+    text-align: center;
+    border:0;
+    outline: none;
+    caret-color: #ff6743;
+}
 .login-code-time{
     width: 95%;
     padding-left: 5%;

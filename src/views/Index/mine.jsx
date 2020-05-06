@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import '../../assets/css/mine.css'
 import axios from 'axios'
 import {
@@ -9,18 +9,18 @@ export default class mine extends Component {
         super(props)
         this.state={
             user:false,
-            userInfo:{}
+            userInfo:{userName:'hh',userId:'ll'}
         }
     }
     goLogin(path,e){
-        if(!this.sessionStorage){
+        if(!sessionStorage.user){
             this.props.history.push('/login')
         }else{
             this.props.history.push(path)
         }
     }
     async getUserMessage(){
-        if(!this.sessionStorage){
+        if(!sessionStorage.user){
             const {data} = await axios.get('/user/account/basicInfo?version=6.1.1&referer=2')
             console.log(data)
             this.setState({
@@ -28,6 +28,17 @@ export default class mine extends Component {
                 userInfo:data.data
             })
             console.log(this.state.userInfo['basic_info']['user_money'])
+        }else{
+            const {data} = await axios.get('/api/getUser',{
+                params:{
+                    userPhone:sessionStorage.user
+                }
+            })
+            console.log(data)
+            this.setState({
+                user:true,
+                userInfo:data.user
+            })
         }
     }
     componentDidMount(){
@@ -45,32 +56,32 @@ export default class mine extends Component {
                             <div onClick={this.goLogin.bind(this)}>
                             <div style={{display:'flex'}}>
                                 <div className={"mine-main-userLogo"}>
-                                    <img src={"https://m.juooo.com/static/img/logo-user.8413cbf.png"} alt="" />
+                                    <img src={sessionStorage.user?'https://image.juooo.com/group1/M00/03/6F/rAoKNV0XF2uABEtSAAANUrP00o0602.png':"https://m.juooo.com/static/img/logo-user.8413cbf.png"} alt="" />
                                 </div>
                                 <div className={"mine-main-userLogo-right"}>
-                                    <p className={"mine-main-userLogo-right"}>登录/注册</p>
-                                    <p className={"mine-main-userLogo-right2"}>请点击登录
-                                        <i className={'iconfont icon-dayu'}></i>
+                                    <p className={"mine-main-userLogo-right"}>{sessionStorage.user?this.state.userInfo.userName:'登录/注册'}</p>
+                                    <p className={"mine-main-userLogo-right2"}>{sessionStorage.user?'ID:'+this.state.userInfo.userId:<Fragment>请点击登录
+                                        <i className={'iconfont icon-dayu'}></i></Fragment>}
                                     </p>
                                 </div>
                             </div>
                             <div className={'mine-main-vip'}>
-                                <p>普通会员</p>
+                                <p style={{background:sessionStorage.user? "linear-gradient(-45deg, #f5dea9, #f8d583)":'',color:sessionStorage.user?'#232323':''}}>普通会员</p>
                             </div>
                             </div>
                             <div className={'mine-main-bottom'}>
                                 <div className={'mine-main-bottom-item'}>
-                                    <p style={{fontSize:'16px'}}>{!this.state.user?0:this.state.userInfo.basic_info.user_money}</p>
+                                    <p style={{fontSize:'16px',color:sessionStorage.user?'orange':''}}>{!this.state.user?0:this.state.userInfo.basic_info.user_money}</p>
                                     <p style={{fontSize:'10px',color:'#666'}}>账户余额</p>
                                 </div>
                                 <div className={'mine-main-bor'}></div>
                                 <div className={'mine-main-bottom-item'}>
-                                    <p style={{fontSize:'16px'}}>{!this.state.user?0:this.state.userInfo.basic_info.scores}</p>
+                                    <p style={{fontSize:'16px',color:sessionStorage.user?'orange':''}}>{!this.state.user?0:this.state.userInfo.basic_info.scores}</p>
                                     <p style={{fontSize:'10px',color:'#666'}}>积分</p>
                                 </div>
                                 <div className={'mine-main-bor'}></div>
                                 <div className={'mine-main-bottom-item'}>
-                                    <p style={{fontSize:'16px'}}>{!this.state.user?0:this.state.userInfo.coupon_info.total}</p>
+                                    <p style={{fontSize:'16px',color:sessionStorage.user?'orange':''}}>{!this.state.user?0:this.state.userInfo.coupon_info.total}</p>
                                     <p style={{fontSize:'10px',color:'#666'}}>优惠券</p>
                                 </div>
                                 <div className={'mine-main-bor'}></div>
