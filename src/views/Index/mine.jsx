@@ -70,10 +70,10 @@ export default class mine extends Component {
                             </div>
                             </div>
                             <div className={'mine-main-bottom'}>
-                                <div className={'mine-main-bottom-item'}>
+                                <Link to={'/balance'} className={'mine-main-bottom-item'} >
                                     <p style={{fontSize:'16px',color:sessionStorage.user?'orange':''}}>{!this.state.user?0:this.state.userInfo.basic_info.user_money}</p>
                                     <p style={{fontSize:'10px',color:'#666'}}>账户余额</p>
-                                </div>
+                                </Link>
                                 <div className={'mine-main-bor'}></div>
                                 <div className={'mine-main-bottom-item'}>
                                     <p style={{fontSize:'16px',color:sessionStorage.user?'orange':''}}>{!this.state.user?0:this.state.userInfo.basic_info.scores}</p>
@@ -95,7 +95,7 @@ export default class mine extends Component {
                     <img src={"https://m.juooo.com/static/img/ad.411f5e6.png"} alt="" className="mine-advPic" />
                     <div className="mine-set">
                         <div className="mine-list">
-                            <Link to={'/order'} className="mine-list-item">
+                            <Link to={'/myOrder'} className="mine-list-item">
                                 <img src={require('../../assets/img/order.png')} alt=""/>
                                 <p className="mine-list-name">我的订单</p>
                             </Link>

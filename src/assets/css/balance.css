@@ -1,0 +1,33 @@
+.balance-header{
+    height: 120px;
+    background:#ff6743;
+    color:#fff;
+}
+.balance-header-title{
+    height: 38px;
+    color:#fff;
+    position: relative;
+    line-height: 38px;
+}
+.balance-header-title .icon-xiaoyuhao{
+    position: absolute;
+    top:0px;
+    left:10px;
+}
+.balance-main{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 42px;
+    border-bottom: 1px solid #ebebeb;
+}
+.balance-main li{
+    width: 58px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 13px;
+}
+.active{
+    color:#ff6743;
+    border-bottom: 2px solid #ff6743;
+}

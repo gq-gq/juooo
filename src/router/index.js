@@ -9,6 +9,8 @@ import error from '../views/error'
 import theaterDetail from '../views/theaterDetail'
 import Search from '../views/Search'
 import MySet from '../views/Myset'
+import balance from '../views/balance'
+import myOrder from '../views/myOrder'
 export default [
     {
         path:'/login',
@@ -29,6 +31,14 @@ export default [
     {
         path:'/Myset',
         component:MySet
+    },
+    {
+        path:'/balance',
+        component:balance
+    },
+    {
+        path:'/myOrder',
+        component:myOrder
     },
     {
         path:'/error',
