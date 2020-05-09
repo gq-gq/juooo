@@ -22,12 +22,12 @@ export default class balance extends Component {
                 </div>
                 <img style={{width:'100%',height:'22px'}} src={"https://m.juooo.com/static/img/balance_bg.5c2e206.png"}alt=""/>
                 <ul className={'balance-main'}>
-                    <li className={this.state.act===1?'active':''} onClick={()=>{
+                    <li className={this.state.act===1?'balance-active':''} onClick={()=>{
                         this.setState({
                             act:1
                         })
                     }}>余额收入</li>
-                    <li className={this.state.act===2?'active':''} onClick={()=>{
+                    <li className={this.state.act===2?'balance-active':''} onClick={()=>{
                         this.setState({
                             act:2
                         })

@@ -64,7 +64,8 @@
 }
 .search-request-item{
     width:49%;
-    height:315px;
+    padding-bottom: 10px;
+    margin-top:5px;
     background:#fefefe;
 }
 .search-request-item>img{

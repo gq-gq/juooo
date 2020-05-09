@@ -117,3 +117,28 @@
 .mine-list-name{
     font-size: 10px;
 }
+.mine-server{
+    width: 100%;
+    overflow: hidden;
+    height: 0;
+    position: fixed;
+    bottom:0;
+    left:0;
+    background:rgba(256,256,256,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    transition: 0.5s;
+}
+.mine-server-img{
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background:#e0b78e;
+}
+.mine-server-img>img{
+    width: 30px;
+    height: 28px;
+    margin-top:14px
+}

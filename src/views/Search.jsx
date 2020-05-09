@@ -81,7 +81,7 @@ export default class Search extends Component {
     }
     render() {
         return (
-            <div style={{background:(this.state.searchList.length>0||this.state.recommend.length>0)?'#f0f0f0':'#fff',minHeight:'568px'}}>
+            <div style={{background:(this.state.searchList.length>0||this.state.recommend.length>0)?'linear-gradient(0deg, #f0f0f0, #f0f0f0, #fefefe)':'#fff',minHeight:'568px'}}>
                 <div className={'searchInput-header'}>
                     <div className={'searchInput-header-search'}>
                         <img src={'https://m.juooo.com/static/img/search_icon.c387af4.png'} className={'searchInput-header-search-big'}/>
@@ -99,7 +99,7 @@ export default class Search extends Component {
                         />
                     </div>
                     <span style={{fontSize:'12px',color:'#666'}} onClick={()=>{
-                        this.props.history.push(-1)
+                        this.props.history.push('/')
                     }}>取消</span>
                 </div>
                 {  this.state.searchList.length>0?
@@ -131,7 +131,7 @@ export default class Search extends Component {
         )
     }
     async componentDidMount(){
-        console.log(this.props.location)
+        console.log(this.props)
         const {data} = await axios.get('/Show/Search/getNewHotWord?version=6.1.1&referer=2') 
         this.setState({
             keyWords:<div>
@@ -149,6 +149,14 @@ export default class Search extends Component {
         })
         if(this.props.location.search.substring(3).length>0){
             this.getSearch.call(this,this.props.location.search.substring(3))
+        }
+        if(this.props.match.params.venue_id){
+            const id = this.props.match.params.venue_id
+            const {data} = await axios.get('/Show/Search/getShowList?city_id=&category=&keywords=&venue_id='+id+'&start_time=&page=1&referer_type=&version=6.1.1&referer=2')
+            console.log(data)
+            this.setState({
+                searchList:data.data.list
+            })
         }
     }
 }

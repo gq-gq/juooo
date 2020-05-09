@@ -253,7 +253,7 @@ export default class login extends Component {
         return (
             <div>
                 <div className={'login-header'}>
-                    <i className={'iconfont icon-xiaoyuhao'} onClick={()=>{
+                    <i className={'iconfont icon-xiaoyuhao'} style={{float:'left',margin:'10px 0 0 10px'}} onClick={()=>{
                         console.log(this.props)
                         this.props.history.push(-1)
                     }}></i>

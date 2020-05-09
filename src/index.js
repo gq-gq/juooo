@@ -11,6 +11,9 @@ import axios from 'axios';
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 import store from './store';
+// import MintUI from 'mint-ui'
+// import 'mint-ui/lib/style.css'
+// React.use(MintUI)
 axios.interceptors.request.use(config=>{
   if(config.url.slice(0,4)==='/api'){
     return config

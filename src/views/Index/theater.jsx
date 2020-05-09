@@ -54,7 +54,8 @@ class theater extends Component {
                                                 ):
                                                 (
                                                     <Link to={'/Search/'+v.show_list_url.split('=')[1]} className={"theater-show-pic"}>
-                                                        <p style={{ width: '100%', height: '100%',background:'#f5f5f5',lineHeight:'130px',fontSize:'12px',textAlign:'center',marginTop:'10px'}}>查看更多>> 
+                                                        <p style={{ width: '100%', height: '100%',background:'#f5f5f5',lineHeight:'130px',fontSize:'12px',textAlign:'center',marginTop:'10px'}}
+                                                        >查看更多>> 
                                                         </p>
                                                     </Link> 
                                                 )

@@ -15,6 +15,11 @@ class GuardRouter extends Component {
     }
     componentDidMount(){
         console.log(this.props)
+        if(this.props.isLogin){
+            if(!sessionStorage.user){
+                this.props.history.push('/login')
+            }
+        }
     }
 }
 export default withRouter(GuardRouter)
